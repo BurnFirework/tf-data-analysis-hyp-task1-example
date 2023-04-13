@@ -16,5 +16,5 @@ def solution(x_success: int,
 
     se = np.sqrt(p_combined * (1 - p_combined) * (1 / x_cnt + 1 / y_cnt))
     z_score = (p_test - p_control) / se
-    p_value = 1 - norm.cdf(z_score)
-    return p_value < imp_crit
+    z_critical = abs(norm.ppf(imp_crit / 2))
+    return (abs(z_score) > z_critical)
